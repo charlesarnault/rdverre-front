@@ -94,28 +94,6 @@ class _MultiFormState extends State<MultiForm> {
     }
 
     var data = users.map((it) => it.user).toList();
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        fullscreenDialog: true,
-        builder: (_) => Scaffold(
-          appBar: AppBar(
-            title: Text('Let\'s meet'),
-          ),
-          body: ListView.builder(
-            itemCount: data.length,
-            itemBuilder: (_, int index) => ListTile(
-              //leading: CircleAvatar(
-              //  child: Text(data[index].name.substring(0, 1)),
-              //),
-              title: Text(data[index].name),
-              subtitle: Text(data[index].loc),
-            ),
-          ),
-        ),
-      ),
-    );
   }
 
   void onSaveOld() {
