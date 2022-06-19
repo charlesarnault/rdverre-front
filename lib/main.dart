@@ -43,11 +43,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
@@ -59,8 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: <Widget>[
             Column(
               children: [
@@ -81,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         label: const Text("Ajouter"),
         tooltip: 'Increment',
-        icon: Icon(Icons.add),
+        icon: const Icon(Icons.add),
       ),
     );
   }
@@ -95,11 +89,21 @@ class GadjoForm extends StatefulWidget {
   }
 }
 
-// Create a corresponding State class. This class holds data related to the form.
 class GadjoFormState extends State<GadjoForm> {
-  // Create a global key that uniquely identifies the Form widget
-  // and allows validation of the form.
   final _formKey = GlobalKey<FormState>();
+  var gadjos = {"name": "", "localization": ""};
+
+  void _editName(text) {
+    setState(() {
+      gadjos["name"] = text;
+    });
+  }
+
+  void _editLoc(text) {
+    setState(() {
+      gadjos["localization"] = text;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +120,9 @@ class GadjoFormState extends State<GadjoForm> {
                 border: OutlineInputBorder(),
                 hintText: 'Nom du gadjo',
               ),
+              onChanged: (text) {
+                _editName(text);
+              },
             ),
           ),
           Padding(
@@ -125,6 +132,9 @@ class GadjoFormState extends State<GadjoForm> {
                 border: OutlineInputBorder(),
                 hintText: 'Localisation du gadjo',
               ),
+              onChanged: (text) {
+                _editLoc(text);
+              },
             ),
           ),
         ],
