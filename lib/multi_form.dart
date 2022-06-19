@@ -15,7 +15,7 @@ class _MultiFormState extends State<MultiForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: .0,
+        elevation: 4,
         title: const Text('RDVerre'),
         actions: <Widget>[
           TextButton(
@@ -101,7 +101,7 @@ class _MultiFormState extends State<MultiForm> {
         fullscreenDialog: true,
         builder: (_) => Scaffold(
           appBar: AppBar(
-            title: Text('List of Users'),
+            title: Text('Let\'s meet'),
           ),
           body: ListView.builder(
             itemCount: data.length,
