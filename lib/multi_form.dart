@@ -16,14 +16,13 @@ class _MultiFormState extends State<MultiForm> {
     return Scaffold(
       appBar: AppBar(
         elevation: .0,
-        leading: const Icon(
-          Icons.wb_cloudy,
-        ),
         title: const Text('RDVerre'),
         actions: <Widget>[
-          FlatButton(
-            child: Text('Enregistrer'),
-            textColor: Colors.white,
+          TextButton(
+            style: TextButton.styleFrom(
+              primary: Colors.white, // Text Color
+            ),
+            child: Text('C\'est parti !'),
             onPressed: onSave,
           )
         ],
@@ -82,33 +81,74 @@ class _MultiFormState extends State<MultiForm> {
 
   ///on save forms
   void onSave() {
+    ///preliminary checks
+    if (users.length <= 0) {
+      print("No users entered");
+      return (null);
+    }
+    var allValid = true;
+    users.forEach((form) => allValid = allValid && form.isValid());
+    if (!allValid) {
+      print("Not all users are valid");
+      return (null);
+    }
+
+    var data = users.map((it) => it.user).toList();
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (_) => Scaffold(
+          appBar: AppBar(
+            title: Text('List of Users'),
+          ),
+          body: ListView.builder(
+            itemCount: data.length,
+            itemBuilder: (_, int index) => ListTile(
+              //leading: CircleAvatar(
+              //  child: Text(data[index].name.substring(0, 1)),
+              //),
+              title: Text(data[index].name),
+              subtitle: Text(data[index].loc),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void onSaveOld() {
+    ///this old function was used to render a list of all users entered when the "Let's go" button was clicked
     if (users.length > 0) {
       var allValid = true;
       users.forEach((form) => allValid = allValid && form.isValid());
-      if (allValid) {
-        var data = users.map((it) => it.user).toList();
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            fullscreenDialog: true,
-            builder: (_) => Scaffold(
-              appBar: AppBar(
-                title: Text('List of Users'),
-              ),
-              body: ListView.builder(
-                itemCount: data.length,
-                itemBuilder: (_, i) => ListTile(
-                  leading: CircleAvatar(
-                    child: Text(data[i].name.substring(0, 1)),
-                  ),
-                  title: Text(data[i].name),
-                  subtitle: Text(data[i].loc),
-                ),
+      if (!allValid) {
+        print("Not all users are valid");
+        return (null);
+      }
+      var data = users.map((it) => it.user).toList();
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          fullscreenDialog: true,
+          builder: (_) => Scaffold(
+            appBar: AppBar(
+              title: Text('List of Users'),
+            ),
+            body: ListView.builder(
+              itemCount: data.length,
+              itemBuilder: (_, int index) => ListTile(
+                //leading: CircleAvatar(
+                //  child: Text(data[index].name.substring(0, 1)),
+                //),
+                title: Text(data[index].name),
+                subtitle: Text(data[index].loc),
               ),
             ),
           ),
-        );
-      }
+        ),
+      );
     }
   }
 }

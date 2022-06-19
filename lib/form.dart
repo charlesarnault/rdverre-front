@@ -32,7 +32,7 @@ class _UserFormState extends State<UserForm> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               AppBar(
-                leading: Icon(Icons.verified_user),
+                leading: Icon(Icons.account_circle),
                 elevation: 0,
                 title: Text('Petit gadjo'),
                 backgroundColor: Theme.of(context).colorScheme.secondary,
@@ -45,16 +45,16 @@ class _UserFormState extends State<UserForm> {
                 ],
               ),
               Padding(
-                padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+                padding: EdgeInsets.only(left: 16, right: 16, top: 8),
                 child: TextFormField(
                   initialValue: widget.user.name,
                   //onSaved: (val) => widget.user.name = val,
-                  validator: (val) =>
-                      val.length > 3 ? null : 'Full name is invalid',
+                  validator: (val) => val.length > 3
+                      ? null
+                      : 'Nom invalide (au moins 4 lettres)',
                   decoration: const InputDecoration(
                     labelText: 'Nom',
                     hintText: 'Comment s\'appelle le petit gadjo ?',
-                    icon: Icon(Icons.person),
                     isDense: true,
                   ),
                 ),
@@ -67,7 +67,6 @@ class _UserFormState extends State<UserForm> {
                   decoration: const InputDecoration(
                     labelText: 'Localisation',
                     hintText: 'Où se trouve le petit gadjo ?',
-                    icon: Icon(Icons.location_pin),
                     isDense: true,
                   ),
                 ),

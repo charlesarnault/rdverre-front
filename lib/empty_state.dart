@@ -6,22 +6,30 @@ class EmptyState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      borderRadius: BorderRadius.circular(16),
-      elevation: 16,
-      color: Theme.of(context).cardColor.withOpacity(.95),
-      shadowColor: Theme.of(context).colorScheme.secondary.withOpacity(.5),
+    return Align(
+      alignment: Alignment.topCenter,
       child: Padding(
-        padding: EdgeInsets.all(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Text(title, style: Theme.of(context).textTheme.headline3),
-            Padding(
-              padding: EdgeInsets.all(8),
-              child: Text(message),
+        padding: EdgeInsets.only(left: 24, top: 48, right: 24),
+        child: Material(
+          borderRadius: BorderRadius.circular(16),
+          elevation: 4,
+          color: Theme.of(context).cardColor.withOpacity(.95),
+          child: Padding(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text(title, style: Theme.of(context).textTheme.headline3),
+                Padding(
+                  padding: EdgeInsets.all(8),
+                  child: Text(
+                    message,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
