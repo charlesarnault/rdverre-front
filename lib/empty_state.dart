@@ -16,9 +16,9 @@ class EmptyState extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            Text(title, style: Theme.of(context).textTheme.headline1),
+            Text(title, style: Theme.of(context).textTheme.headline3),
             Padding(
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(8),
               child: Text(message),
             ),
           ],

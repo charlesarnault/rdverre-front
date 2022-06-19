@@ -34,8 +34,8 @@ class _UserFormState extends State<UserForm> {
               AppBar(
                 leading: Icon(Icons.verified_user),
                 elevation: 0,
-                title: Text('User Details'),
-                backgroundColor: Theme.of(context).accentColor,
+                title: Text('Petit gadjo'),
+                backgroundColor: Theme.of(context).colorScheme.secondary,
                 centerTitle: true,
                 actions: <Widget>[
                   IconButton(
@@ -47,13 +47,13 @@ class _UserFormState extends State<UserForm> {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, top: 16),
                 child: TextFormField(
-                  initialValue: widget.user.fullName,
-                  //onSaved: (val) => widget.user.fullName = val,
+                  initialValue: widget.user.name,
+                  //onSaved: (val) => widget.user.name = val,
                   validator: (val) =>
                       val.length > 3 ? null : 'Full name is invalid',
                   decoration: const InputDecoration(
-                    labelText: 'Full Name',
-                    hintText: 'Enter your full name',
+                    labelText: 'Nom',
+                    hintText: 'Comment s\'appelle le petit gadjo ?',
                     icon: Icon(Icons.person),
                     isDense: true,
                   ),
@@ -62,14 +62,12 @@ class _UserFormState extends State<UserForm> {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 24),
                 child: TextFormField(
-                  initialValue: widget.user.email,
-                  //onSaved: (val) => widget.user.email = val,
-                  validator: (val) =>
-                      val.contains('@') ? null : 'Email is invalid',
+                  initialValue: widget.user.loc,
+                  //onSaved: (val) => widget.user.loc = val,
                   decoration: const InputDecoration(
-                    labelText: 'Email Address',
-                    hintText: 'Enter your email',
-                    icon: Icon(Icons.email),
+                    labelText: 'Localisation',
+                    hintText: 'Où se trouve le petit gadjo ?',
+                    icon: Icon(Icons.location_pin),
                     isDense: true,
                   ),
                 ),

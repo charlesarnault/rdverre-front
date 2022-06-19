@@ -19,10 +19,10 @@ class _MultiFormState extends State<MultiForm> {
         leading: const Icon(
           Icons.wb_cloudy,
         ),
-        title: const Text('REGISTER USERS'),
+        title: const Text('RDVerre'),
         actions: <Widget>[
           FlatButton(
-            child: Text('Save'),
+            child: Text('Enregistrer'),
             textColor: Colors.white,
             onPressed: onSave,
           )
@@ -42,8 +42,9 @@ class _MultiFormState extends State<MultiForm> {
         child: users.length <= 0
             ? Center(
                 child: EmptyState(
-                  title: 'Oops',
-                  message: 'Add form by tapping add button below',
+                  title: 'C\'est vide',
+                  message:
+                      'Ajoute tes petits gadjos à l\'aide du bouton ci-dessous',
                 ),
               )
             : ListView.builder(
@@ -98,10 +99,10 @@ class _MultiFormState extends State<MultiForm> {
                 itemCount: data.length,
                 itemBuilder: (_, i) => ListTile(
                   leading: CircleAvatar(
-                    child: Text(data[i].fullName.substring(0, 1)),
+                    child: Text(data[i].name.substring(0, 1)),
                   ),
-                  title: Text(data[i].fullName),
-                  subtitle: Text(data[i].email),
+                  title: Text(data[i].name),
+                  subtitle: Text(data[i].loc),
                 ),
               ),
             ),

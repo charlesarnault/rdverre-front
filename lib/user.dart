@@ -1,6 +1,6 @@
 class User {
-  String fullName;
-  String email;
+  String name;
+  String loc;
 
-  User({this.fullName = '', this.email = ''});
+  User({this.name = '', this.loc = ''});
 }
