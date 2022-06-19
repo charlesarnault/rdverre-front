@@ -1,4 +1,4 @@
-# rdverre_front
+# RDVerre Front
 
 This repo is the front-end repository for the crazy RDVerre project. It is a Flutter-framework app which allows you to add friends, enter their current positions, and then find the ideal meeting point which minimizes average travel time.
 
