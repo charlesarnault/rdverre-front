@@ -1,16 +1,13 @@
 # rdverre_front
 
-A new Flutter project.
+This repo is the front-end repository for the crazy RDVerre project. It is a Flutter-framework app which allows you to add friends, enter their current positions, and then find the ideal meeting point which minimizes average travel time.
 
-## Getting Started
+## TBD
 
-This project is a starting point for a Flutter application.
+- When deleting a user, the selected user is not deleted - on the contrary, it is always the last user that pops
 
-A few resources to get you started if this is your first Flutter project:
+- Suggesting location when starting to input (@Théophile)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Passing the information onto the next screen
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Creating "Let's go" button and page
