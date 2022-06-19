@@ -6,10 +6,6 @@ This repo is the front-end repository for the crazy RDVerre project. It is a Flu
 
 - When deleting a user, the selected user is not deleted - on the contrary, it is always the last user that pops
 
-- Suggesting location when starting to input (@Théophile)
+- Suggesting location when starting to input
 
-- Passing the information onto the next screen
-
-- Creating "Let's go" button and page
-
-- "Save" button doesn't work
+- Passing the information onto the next screen - making the "Let's go" button functional -> link with back-end at this point?
