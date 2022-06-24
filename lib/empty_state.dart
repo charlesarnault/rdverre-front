@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class EmptyState extends StatelessWidget {
   final String title, message;
-  EmptyState({this.title, this.message});
+  EmptyState({required this.title, required this.message});
 
   @override
   Widget build(BuildContext context) {

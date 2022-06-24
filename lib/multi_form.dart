@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'empty_state.dart';
 import 'form.dart';
-import 'user.dart';
+import 'models.dart';
 
 class MultiForm extends StatefulWidget {
   @override
@@ -61,7 +61,7 @@ class _MultiFormState extends State<MultiForm> {
   }
 
   ///on form user deleted
-  void onDelete(User _user) {
+  void onDelete(Gadjo _user) {
     setState(() {
       var find = users.firstWhere((it) => it.user == _user);
       if (find != null) users.removeAt(users.indexOf(find));
@@ -71,7 +71,7 @@ class _MultiFormState extends State<MultiForm> {
   ///on add form
   void onAddForm() {
     setState(() {
-      var _user = User();
+      var _user = Gadjo(loc: Location());
       users.add(UserForm(
         user: _user,
         onDelete: () => onDelete(_user),
@@ -94,6 +94,7 @@ class _MultiFormState extends State<MultiForm> {
     }
 
     var data = users.map((it) => it.user).toList();
+    print(data);
   }
 
   void onSaveOld() {
@@ -121,7 +122,7 @@ class _MultiFormState extends State<MultiForm> {
                 //  child: Text(data[index].name.substring(0, 1)),
                 //),
                 title: Text(data[index].name),
-                subtitle: Text(data[index].loc),
+                subtitle: Text(data[index].loc.name),
               ),
             ),
           ),

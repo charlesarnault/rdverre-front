@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'user.dart';
+import 'models.dart';
 
 typedef OnDelete();
 
 class UserForm extends StatefulWidget {
-  final User user;
+  final Gadjo user;
   final state = _UserFormState();
   final OnDelete onDelete;
 
-  UserForm({Key key, this.user, this.onDelete}) : super(key: key);
+  UserForm({Key? key, required this.user, required this.onDelete})
+      : super(key: key);
   @override
   _UserFormState createState() => state;
 
@@ -49,9 +50,9 @@ class _UserFormState extends State<UserForm> {
                 child: TextFormField(
                   initialValue: widget.user.name,
                   //onSaved: (val) => widget.user.name = val,
-                  validator: (val) => val.length > 3
+                  validator: (val) => (val?.length ?? 0) > 1
                       ? null
-                      : 'Nom invalide (au moins 4 lettres)',
+                      : 'Nom invalide (au moins 2 lettres)',
                   decoration: const InputDecoration(
                     labelText: 'Nom',
                     hintText: 'Comment s\'appelle le petit gadjo ?',
@@ -62,7 +63,7 @@ class _UserFormState extends State<UserForm> {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 24),
                 child: TextFormField(
-                  initialValue: widget.user.loc,
+                  initialValue: widget.user.loc.name,
                   //onSaved: (val) => widget.user.loc = val,
                   decoration: const InputDecoration(
                     labelText: 'Localisation',
@@ -80,8 +81,8 @@ class _UserFormState extends State<UserForm> {
 
   ///form validator
   bool validate() {
-    var valid = form.currentState.validate();
-    if (valid) form.currentState.save();
-    return valid;
+    var valid = form.currentState?.validate();
+    if (valid ?? false) form.currentState?.save();
+    return valid ?? false;
   }
 }
