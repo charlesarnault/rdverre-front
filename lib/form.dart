@@ -63,7 +63,7 @@ class _UserFormState extends State<UserForm> {
               Padding(
                 padding: EdgeInsets.only(left: 16, right: 16, bottom: 24),
                 child: TextFormField(
-                  initialValue: widget.user.loc.name,
+                  initialValue: widget.user.location.name,
                   //onSaved: (val) => widget.user.loc = val,
                   decoration: const InputDecoration(
                     labelText: 'Localisation',

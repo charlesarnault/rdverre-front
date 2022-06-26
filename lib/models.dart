@@ -4,13 +4,24 @@ class Location {
   double? lng;
 
   Location({this.name = "", this.lat, this.lng});
+
+  Map<String, dynamic> toJson() {
+    return {"name": name, "lat": lat, "lng": lng};
+  }
 }
 
 class Gadjo {
   String name;
-  Location loc;
+  Location location;
 
-  Gadjo({this.name = "", required this.loc});
+  Gadjo({this.name = "", required this.location});
+
+  Map<String, dynamic> toJson() {
+    return {
+      "name": name,
+      "location": location.toJson(),
+    };
+  }
 }
 
 class GadjosTeam {
@@ -18,15 +29,21 @@ class GadjosTeam {
 
   GadjosTeam({required this.gadjos});
 
+  List toJson() {
+    List json = [];
+    gadjos.forEach((element) => json.add(element.toJson()));
+    return json;
+  }
+
   factory GadjosTeam.defaultTeam() {
     return GadjosTeam(gadjos: [
       Gadjo(
           name: "Chay",
-          loc: Location(
+          location: Location(
               name: "79 rue de la Tour", lat: 48.861838, lng: 2.278190)),
       Gadjo(
           name: "Ad",
-          loc:
+          location:
               Location(name: "Place des Vosges", lat: 48.856222, lng: 2.364736))
     ]);
   }

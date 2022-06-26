@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_multipage_form/api.dart';
 import 'empty_state.dart';
 import 'form.dart';
 import 'models.dart';
@@ -23,7 +24,10 @@ class _MultiFormState extends State<MultiForm> {
               primary: Colors.white, // Text Color
             ),
             child: Text('C\'est parti !'),
-            onPressed: onSave,
+            onPressed: () {
+              getBestMeetUp(GadjosTeam.defaultTeam());
+              onSave();
+            },
           )
         ],
       ),
@@ -71,7 +75,7 @@ class _MultiFormState extends State<MultiForm> {
   ///on add form
   void onAddForm() {
     setState(() {
-      var _user = Gadjo(loc: Location());
+      var _user = Gadjo(location: Location());
       users.add(UserForm(
         user: _user,
         onDelete: () => onDelete(_user),
@@ -122,7 +126,7 @@ class _MultiFormState extends State<MultiForm> {
                 //  child: Text(data[index].name.substring(0, 1)),
                 //),
                 title: Text(data[index].name),
-                subtitle: Text(data[index].loc.name),
+                subtitle: Text(data[index].location.name),
               ),
             ),
           ),
